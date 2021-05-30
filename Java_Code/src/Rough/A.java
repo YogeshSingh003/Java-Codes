@@ -1,5 +1,0 @@
-package Rough;
-
-class A {
-
-}
