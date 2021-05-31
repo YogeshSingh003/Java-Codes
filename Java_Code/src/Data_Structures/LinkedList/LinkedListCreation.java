@@ -30,26 +30,47 @@ public class LinkedListCreation<E> {
         return head == null;
     }
 
-    public  E removeLast() throws Exception{
-        Node<E> temp = head;
+    void insertAtStart(E data){
+        Node toInsert = new Node(data);
+        toInsert.next = null;
+        toInsert.next = head;
+        head = toInsert;
+    }
 
-        if(temp == null){
-            throw new Exception("Cannot remove last element from empty stack");
+
+    void insertAtIndex(int index,E data){
+        Node insertAtIndex = new Node(data);
+        insertAtIndex.next = null;
+
+        if(index == 0){
+//            insertAtStart(data);
+            insertAtIndex.next = head;
+            head = insertAtIndex;
+            return;
         }
 
-        if(temp.next == null){
-            Node<E> toRemove = head;
-            head = null;
-            return toRemove.data;
-        }
-        while(temp.next.next != null ){
-            System.out.println(temp.data);
+        Node temp = head;
+        for(int i = 0; i < index-1; i++){
             temp = temp.next;
         }
-        Node<E> toRemove = temp.next;
-        temp.next = null;
-        return toRemove.data;
+        insertAtIndex.next = temp.next;
+        temp.next = insertAtIndex;
     }
+
+    void delete(int index){
+
+        if(index == 0){
+            head = head.next;
+            return;
+        }
+
+        Node temp = head;
+        for(int i = 0; i < index-1; i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
+
     static class Node<E>{
         E data;
         Node next;

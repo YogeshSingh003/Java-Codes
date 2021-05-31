@@ -25,7 +25,13 @@ public class MyLinkedList {
 
         // Using LinkedList Created by me
         LinkedListCreation<String> ll = new LinkedListCreation();
-        ll.add("Ram"+1);
+        ll.add("Ram");
+        ll.add("shyam");
+        ll.insertAtStart("mukesh");
+        ll.add("suresh");
+        ll.insertAtIndex(2,"Rani");
+        ll.insertAtIndex(0,"Raja");
+        ll.delete(1);
         ll.print();
     }
 }
