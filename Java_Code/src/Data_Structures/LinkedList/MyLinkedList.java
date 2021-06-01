@@ -32,6 +32,7 @@ public class MyLinkedList {
         ll.insertAtIndex(2,"Rani");
         ll.insertAtIndex(0,"Raja");
         ll.delete(1);
+//        ll.deleteLast();
         ll.print();
     }
 }

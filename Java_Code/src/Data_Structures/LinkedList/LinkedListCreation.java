@@ -18,7 +18,7 @@ public class LinkedListCreation<E> {
         temp.next = toAdd;
     }
 
-    void print(){
+    public void print(){
         Node temp = head;
         while(temp != null ){
             System.out.println(temp.data);
@@ -40,7 +40,7 @@ public class LinkedListCreation<E> {
 
     void insertAtIndex(int index,E data){
         Node insertAtIndex = new Node(data);
-        insertAtIndex.next = null;
+//        insertAtIndex.next = null;
 
         if(index == 0){
 //            insertAtStart(data);
@@ -55,6 +55,37 @@ public class LinkedListCreation<E> {
         }
         insertAtIndex.next = temp.next;
         temp.next = insertAtIndex;
+    }
+
+    public E deleteLast() throws Exception{
+        Node<E> temp = head;
+        if(head == null){
+            throw new Exception("Can not remove last element from an empty list");
+        }
+        if(temp.next == null){
+            Node<E> toRemove = head;
+            head = null;
+            return toRemove.data;
+        }
+        while (temp.next.next != null){
+            temp = temp.next;
+        }
+        Node<E> toRemove = temp.next;
+        temp.next = null;
+        return toRemove.data;
+    }
+
+    public E getLast() throws Exception{
+        Node<E> temp = head;
+        if(head == null){
+            throw new Exception("Can not peek element from an empty list");
+        }
+
+        while (temp.next != null){
+            temp = temp.next;
+        }
+
+        return temp.data;
     }
 
     void delete(int index){
