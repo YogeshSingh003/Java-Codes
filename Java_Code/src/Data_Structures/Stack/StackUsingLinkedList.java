@@ -1,9 +1,16 @@
 package Data_Structures.Stack;
 
+<<<<<<< HEAD
 import Data_Structures.LinkedList.MyLinkedList;
 
 public class StackUsingLinkedList<E> {
     private MyLinkedList<E> ll = new MyLinkedList();
+=======
+import Data_Structures.LinkedList.LinkedListCreation;
+
+public class StackUsingLinkedList<E> {
+    private LinkedListCreation<E> ll = new LinkedListCreation();
+>>>>>>> 21ec0459e4830a114090a1b978f2d352fc940145
 
     void push(E e){
         ll.add(e);

@@ -3,7 +3,7 @@ package Data_Structures.LinkedList;
 import java.util.*;
 
 public class LinkedListMain {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         // Without Generics
         List l1 = new LinkedList();
         l1.add(3);
@@ -32,7 +32,7 @@ public class LinkedListMain {
         ll.insertAtIndex(2,"Rani");
         ll.insertAtIndex(0,"Raja");
         ll.delete(1);
-//        ll.deleteLast();
+        ll.deleteLast();
         ll.print();
     }
 }
