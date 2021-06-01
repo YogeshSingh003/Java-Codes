@@ -1,50 +1,114 @@
 package Data_Structures.LinkedList;
 
-import java.util.*;
+public class MyLinkedList<E> {
+    Node head;
 
-public class MyLinkedList {
-    public static void main(String[] args) {
-        // Without Generics
-        List l1 = new LinkedList();
-        l1.add(3);
-        l1.add("Krishna");
-        l1.add(true);
-        l1.add(6.87);
-        l1.add(4);
-        System.out.println(l1);
+    public void add(E data){
+        Node toAdd = new Node(data);
 
-        // With Generics
-        List<String> l2 = new LinkedList();
-        l2.add("Ram"+1);
-        l2.add("Shyam");
-        System.out.println(l2);
+        if(isEmpty()){
+            head = toAdd;
+            return;
+        }
 
-        // generics class object
-        Pair<Integer,String> p1 = new Pair(9, "Tam");
-        p1.description();
-
-        // Using LinkedList Created by me
-        LinkedListCreation<String> ll = new LinkedListCreation();
-        ll.add("Ram");
-        ll.add("shyam");
-        ll.insertAtStart("mukesh");
-        ll.add("suresh");
-        ll.insertAtIndex(2,"Rani");
-        ll.insertAtIndex(0,"Raja");
-        ll.delete(1);
-        ll.print();
+        Node temp = head;
+        while(temp.next != null ){
+            temp = temp.next;
+        }
+        temp.next = toAdd;
     }
-}
 
-// Generics Class
-class Pair<A,B>{
-    A a;
-    B b;
-    public Pair(A a,B b){
-        this.a = a;
-        this.b = b;
+    public void print(){
+        Node temp = head;
+        while(temp != null ){
+            System.out.println(temp.data);
+            temp = temp.next;
+        }
     }
-     void description(){
-         System.out.println(a+" "+b);
-     }
+
+    public boolean isEmpty(){
+        return head == null;
+    }
+
+    void insertAtStart(E data){
+        Node toInsert = new Node(data);
+        toInsert.next = null;
+        toInsert.next = head;
+        head = toInsert;
+    }
+
+
+    void insertAtIndex(int index,E data){
+        Node insertAtIndex = new Node(data);
+//        insertAtIndex.next = null;
+
+        if(index == 0){
+//            insertAtStart(data);
+            insertAtIndex.next = head;
+            head = insertAtIndex;
+            return;
+        }
+
+        Node temp = head;
+        for(int i = 0; i < index-1; i++){
+            temp = temp.next;
+        }
+        insertAtIndex.next = temp.next;
+        temp.next = insertAtIndex;
+    }
+
+    public E deleteLast() throws Exception{
+        Node<E> temp = head;
+        if(head == null){
+            throw new Exception("Can not remove last element from an empty list");
+        }
+        if(temp.next == null){
+            Node<E> toRemove = head;
+            head = null;
+            return toRemove.data;
+        }
+        while (temp.next.next != null){
+            temp = temp.next;
+        }
+        Node<E> toRemove = temp.next;
+        temp.next = null;
+        return toRemove.data;
+    }
+
+    public E getLast() throws Exception{
+        Node<E> temp = head;
+        if(head == null){
+            throw new Exception("Can not peek element from an empty list");
+        }
+
+        while (temp.next != null){
+            temp = temp.next;
+        }
+
+        return temp.data;
+    }
+
+    void delete(int index){
+
+        if(index == 0){
+            head = head.next;
+            return;
+        }
+
+        Node temp = head;
+        for(int i = 0; i < index-1; i++){
+            temp = temp.next;
+        }
+        temp.next = temp.next.next;
+    }
+
+    static class Node<E>{
+        E data;
+        Node next;
+
+        public Node(E data){
+            this.data = data;
+            next = null;
+        }
+    }
 }

@@ -1,6 +1,6 @@
 package Data_Structures.ArrayList;
 import java.util.*;
-public class MyArrayList {
+public class ArrayListMain {
     public static void main(String[] args) {
 
         // Without generics
