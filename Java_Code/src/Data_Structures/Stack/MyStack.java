@@ -1,20 +1,31 @@
 package Data_Structures.Stack;
 
-import java.util.Stack;
+import Data_Structures.LinkedList.MyLinkedList;
 
-public class MyStack {
-    public static void main(String[] args) {
-        Stack<Integer> s = new Stack();
+public class MyStack<E> {
+    private MyLinkedList<E> ll = new MyLinkedList();
 
-        s.push(12);
-        s.push(45);
-        s.push(78);
-
-        System.out.println(s.pop());
-
-        System.out.println(s.peek());
-
-        System.out.println(s.pop());
-        System.out.println(s);
+    public void push(E e){
+        ll.add(e);
     }
+
+    public E pop() throws Exception {
+        if(ll.isEmpty()){
+            throw new Exception("Popping from empty stack");
+        }
+
+    return ll.deleteLast();
+    }
+
+    void display(){
+        ll.print();
+    }
+
+    public E peek() throws Exception {
+        if(ll.isEmpty()){
+            throw new Exception("Peeking from empty stack");
+        }
+        return ll.getLast();
+    }
+
 }
