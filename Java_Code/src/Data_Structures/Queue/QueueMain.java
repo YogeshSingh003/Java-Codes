@@ -24,5 +24,20 @@ public class QueueMain {
         System.out.println(q.element());    // --> It'll return Null
 
         System.out.println(q);
+
+        MyQueue<Integer> mq = new MyQueue<>();
+        mq.enqueue(54);
+        mq.enqueue(87);
+        mq.enqueue(90);
+        mq.enqueue(45);
+
+        System.out.println(mq.dequeue());
+        System.out.println(mq.dequeue());
+        System.out.println(mq.dequeue());
+        System.out.println(mq.dequeue());
+        System.out.println(mq.dequeue());
+
+        mq.enqueue(145);
+        System.out.println(mq.dequeue());
     }
 }

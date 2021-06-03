@@ -102,9 +102,9 @@ public class MyLinkedList<E> {
         temp.next = temp.next.next;
     }
 
-    static class Node<E>{
-        E data;
-        Node next;
+    public static class Node<E>{
+        public E data;
+        public Node next;
 
         public Node(E data){
             this.data = data;
